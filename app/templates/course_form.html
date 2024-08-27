@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Create Course - EduNet{% endblock %}
+{% block content %}
+<h1>Create New Course</h1>
+<form method="POST" action="{{ url_for('create_course') }}" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    <div>
+        {{ form.title.label }}<br>
+        {{ form.title(size=32) }}<br>
+        {% for error in form.title.errors %}
+            <span class="error">{{ error }}</span><br>
+        {% endfor %}
+    </div>
+    <div>
+        {{ form.description.label }}<br>
+        {{ form.description(rows=5, cols=32) }}<br>
+        {% for error in form.description.errors %}
+            <span class="error">{{ error }}</span><br>
+        {% endfor %}
+    </div>
+    <div>
+        {{ form.content.label }}<br>
+        {{ form.content() }}<br>
+        {% for error in form.content.errors %}
+            <span class="error">{{ error }}</span><br>
+        {% endfor %}
+    </div>
+    <div>
+        {{ form.submit() }}
+    </div>
+</form>
+{% endblock %}
